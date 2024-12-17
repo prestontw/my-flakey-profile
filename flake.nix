@@ -37,8 +37,12 @@
           # Specifies things to pin in the flake registry and in NIX_PATH.
           pinned = { nixpkgs = toString nixpkgs; };
           paths = with pkgs; [
-            stow
             direnv
+            # helix
+            jq
+            # starship
+            stow
+            watchexec
             zellij
           ];
         };
