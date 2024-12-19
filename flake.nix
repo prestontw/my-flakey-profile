@@ -40,7 +40,7 @@
             direnv
             # helix
             jq
-            # starship
+            starship
             stow
             watchexec
             zellij
