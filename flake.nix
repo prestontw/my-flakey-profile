@@ -17,6 +17,13 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        macPkgs = with pkgs; [
+          # alt-tab-macos
+          # rectangle
+        ];
+        linuxPkgs = with pkgs; [
+          starship
+        ];
       in
       {
         # Any extra arguments to mkProfile are forwarded directly to pkgs.buildEnv.
@@ -40,11 +47,11 @@
             direnv
             # helix
             jq
-            starship
             stow
             watchexec
             zellij
-          ];
+          ] ++ lib.optionals stdenv.isDarwin macPkgs
+          ++ lib.optionals stdenv.isLinux linuxPkgs;
         };
       });
 }
