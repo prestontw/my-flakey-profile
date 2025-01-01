@@ -47,6 +47,8 @@
             direnv
             # helix
             jq
+            nodejs_22
+            pnpm
             stow
             watchexec
             zellij
