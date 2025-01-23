@@ -47,6 +47,8 @@
             direnv
             # helix
             jq
+            nil
+            nixpkgs-fmt
             nodejs_22
             pnpm
             stow
