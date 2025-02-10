@@ -20,6 +20,7 @@
         macPkgs = with pkgs; [
           # alt-tab-macos
           # rectangle
+          # aerospace # alternative to both above
         ];
         linuxPkgs = with pkgs; [
           starship
@@ -44,9 +45,12 @@
           # Specifies things to pin in the flake registry and in NIX_PATH.
           pinned = { nixpkgs = toString nixpkgs; };
           paths = with pkgs; [
+            # alacritty
             direnv
+            # ghostty
             # helix
             jq
+            # jujutsu
             nil
             nixpkgs-fmt
             nodejs_22
