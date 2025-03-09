@@ -19,7 +19,6 @@
         };
         macPkgs = with pkgs; [
           # alt-tab-macos
-          # rectangle
           # aerospace # alternative to both above
         ];
         linuxPkgs = with pkgs; [
