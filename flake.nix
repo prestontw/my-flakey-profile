@@ -20,6 +20,7 @@
         macPkgs = with pkgs; [
           # alt-tab-macos
           # aerospace # alternative to both above
+          # rectangle
         ];
         linuxPkgs = with pkgs; [
           starship
