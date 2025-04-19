@@ -48,6 +48,7 @@
             # alacritty
             direnv
             # ghostty
+            git
             # helix
             jq
             # jujutsu
