@@ -19,7 +19,8 @@
         };
         macPkgs = with pkgs; [
           # alt-tab-macos
-          # aerospace # alternative to both above
+          # aerospace # alternative to alt-tab and rectangle
+          git
           # rectangle
         ];
         linuxPkgs = with pkgs; [
@@ -48,7 +49,6 @@
             # alacritty
             direnv
             # ghostty
-            git
             # helix
             jq
             # jujutsu
