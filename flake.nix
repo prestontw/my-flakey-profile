@@ -18,10 +18,8 @@
           inherit system;
         };
         macPkgs = with pkgs; [
-          # alt-tab-macos
-          # aerospace # alternative to alt-tab and rectangle
+          # aerospace # install through brew
           git
-          # rectangle
         ];
         linuxPkgs = with pkgs; [
           starship
