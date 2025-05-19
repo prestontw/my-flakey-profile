@@ -19,7 +19,7 @@
         };
         macPkgs = with pkgs; [
           # aerospace # install through brew
-          git
+          # git
         ];
         linuxPkgs = with pkgs; [
           starship
@@ -49,7 +49,7 @@
             # ghostty
             # helix
             jq
-            # jujutsu
+            jujutsu
             nil
             nixpkgs-fmt
             nodejs_22
