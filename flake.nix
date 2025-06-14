@@ -44,6 +44,7 @@
           # Specifies things to pin in the flake registry and in NIX_PATH.
           pinned = { nixpkgs = toString nixpkgs; };
           paths = with pkgs; [
+            aha
             # alacritty
             direnv
             # ghostty
