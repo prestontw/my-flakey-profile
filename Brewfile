@@ -1,5 +1,6 @@
 # Non-versioned applications, in the style of <https://matklad.github.io/2025/02/23/macos-for-kde-users.html#Managing-Software>
  
+brew "atuin"
 # Google's own build tool
 brew "bazel"
 # Secure runtime for JavaScript and TypeScript
