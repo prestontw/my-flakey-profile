@@ -8,22 +8,41 @@
   inputs = {
     flakey-profile.url = "github:lf-/flakey-profile";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    floating.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, flakey-profile }:
+  outputs = { self, nixpkgs, flake-utils, flakey-profile, floating }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
         };
-        macPkgs = with pkgs; [
-          # aerospace # install through brew
-          # git
+        floatingPkgs = import floating {
+          inherit system;
+        };
+        commonPinnedPkgs = with pkgs; [
+          aha
+          direnv
+          jq
+          nodejs_22
+          pnpm
+          stow
         ];
-        linuxPkgs = with pkgs; [
+        commonFloatingPkgs = with floatingPkgs; [
+          # alacritty
+          # ghostty
+          # helix
+          jujutsu
+          nil
+          nixpkgs-fmt
+          watchexec
+          zellij
+        ];
+        linuxFloatingPkgs = with floatingPkgs; [
           starship
         ];
+        # Mac floating packages are managed through the Brewfile
       in
       {
         # Any extra arguments to mkProfile are forwarded directly to pkgs.buildEnv.
@@ -43,23 +62,8 @@
           inherit pkgs;
           # Specifies things to pin in the flake registry and in NIX_PATH.
           pinned = { nixpkgs = toString nixpkgs; };
-          paths = with pkgs; [
-            aha
-            # alacritty
-            direnv
-            # ghostty
-            # helix
-            jq
-            jujutsu
-            nil
-            nixpkgs-fmt
-            nodejs_22
-            pnpm
-            stow
-            watchexec
-            zellij
-          ] ++ lib.optionals stdenv.isDarwin macPkgs
-          ++ lib.optionals stdenv.isLinux linuxPkgs;
+          paths = commonPinnedPkgs ++ commonFloatingPkgs
+            ++ pkgs.lib.optionals pkgs.stdenv.isLinux linuxFloatingPkgs;
         };
       });
 }
