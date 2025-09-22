@@ -12,8 +12,16 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, flakey-profile, floating }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      flakey-profile,
+      floating,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -40,6 +48,7 @@
           zellij
         ];
         linuxFloatingPkgs = with floatingPkgs; [
+          atuin
           starship
         ];
         # Mac floating packages are managed through the Brewfile
@@ -61,9 +70,12 @@
         packages.profile = flakey-profile.lib.mkProfile {
           inherit pkgs;
           # Specifies things to pin in the flake registry and in NIX_PATH.
-          pinned = { nixpkgs = toString nixpkgs; };
-          paths = commonPinnedPkgs ++ commonFloatingPkgs
-            ++ pkgs.lib.optionals pkgs.stdenv.isLinux linuxFloatingPkgs;
+          pinned = {
+            nixpkgs = toString nixpkgs;
+          };
+          paths =
+            commonPinnedPkgs ++ commonFloatingPkgs ++ pkgs.lib.optionals pkgs.stdenv.isLinux linuxFloatingPkgs;
         };
-      });
+      }
+    );
 }
