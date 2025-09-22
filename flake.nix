@@ -13,12 +13,12 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      flakey-profile,
-      floating,
+    { self
+    , nixpkgs
+    , flake-utils
+    , flakey-profile
+    , floating
+    ,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -37,6 +37,7 @@
           pnpm
           stow
         ];
+        # "Applications" or floating dependencies common to both OS's
         commonFloatingPkgs = with floatingPkgs; [
           # alacritty
           # ghostty
@@ -47,8 +48,10 @@
           watchexec
           zellij
         ];
+        # "Applications" or floating dependencies specifically for Linux
         linuxFloatingPkgs = with floatingPkgs; [
           atuin
+          helix
           starship
         ];
         # Mac floating packages are managed through the Brewfile
