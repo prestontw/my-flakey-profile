@@ -43,7 +43,9 @@
           jujutsu
           nil
           nixpkgs-fmt
+          # rio # Doesn't support buttonless windows right now with Aerospace; the window is only 600x400 rather than taking up the full space.
           watchexec
+          wezterm
           zellij
         ];
         # "Applications" or floating dependencies specifically for Linux
