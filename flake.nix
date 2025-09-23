@@ -40,8 +40,6 @@
         # "Applications" or floating dependencies common to both OS's
         commonFloatingPkgs = with floatingPkgs; [
           # alacritty
-          # ghostty
-          # helix
           jujutsu
           nil
           nixpkgs-fmt
@@ -51,6 +49,7 @@
         # "Applications" or floating dependencies specifically for Linux
         linuxFloatingPkgs = with floatingPkgs; [
           atuin
+          # ghostty
           helix
           starship
         ];
