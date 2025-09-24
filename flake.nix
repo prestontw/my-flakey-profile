@@ -32,31 +32,25 @@
         commonPinnedPkgs = with pkgs; [
           aha
           direnv
-          jq
           nodejs_22
           pnpm
           stow
         ];
-        # "Applications" or floating dependencies common to both OS's
+        # Floating CLI's and tools common to both OS's
         commonFloatingPkgs = with floatingPkgs; [
-          # alacritty
+          atuin
+          helix
+          jq
           jujutsu
           lua-language-server
           nil
           nixpkgs-fmt
-          # rio # Doesn't support buttonless windows right now with Aerospace; the window is only 600x400 rather than taking up the full space.
+          starship
           watchexec
-          wezterm
+          wget
           zellij
         ];
-        # "Applications" or floating dependencies specifically for Linux
-        linuxFloatingPkgs = with floatingPkgs; [
-          atuin
-          # ghostty
-          helix
-          starship
-        ];
-        # Mac floating packages are managed through the Brewfile
+        # GUI packages are managed through the Brewfile
       in
       {
         # Any extra arguments to mkProfile are forwarded directly to pkgs.buildEnv.
@@ -79,7 +73,7 @@
             nixpkgs = toString nixpkgs;
           };
           paths =
-            commonPinnedPkgs ++ commonFloatingPkgs ++ pkgs.lib.optionals pkgs.stdenv.isLinux linuxFloatingPkgs;
+            commonPinnedPkgs ++ commonFloatingPkgs;
         };
       }
     );
