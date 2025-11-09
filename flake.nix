@@ -56,6 +56,7 @@
           helix
           # niri # built manually, but maybe could have used `mako` and `xwayland-satellite` through nix...
           starship
+          waybar
         ];
         # Mac floating packages are managed through the Brewfile
       in
