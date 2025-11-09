@@ -35,6 +35,7 @@
           jq
           nodejs_22
           pnpm
+          ripgrep
           stow
         ];
         # "Applications" or floating dependencies common to both OS's
