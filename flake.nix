@@ -54,9 +54,11 @@
           atuin
           # ghostty
           helix
-          # niri # built manually, but maybe could have used `mako` and `xwayland-satellite` through nix...
+          mako
+          # niri # built manually; installing through nix doesn't work. but maybe could use `xwayland-satellite` through nix...
           starship
           waybar
+          # xwayland-satellite
         ];
         # Mac floating packages are managed through the Brewfile
       in
