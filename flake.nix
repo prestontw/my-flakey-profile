@@ -53,13 +53,14 @@
         # "Applications" or floating dependencies specifically for Linux
         linuxFloatingPkgs = with floatingPkgs; [
           atuin
+          fuzzel
           # ghostty
           helix
           mako
-          # niri # built manually; installing through nix doesn't work. but maybe could use `xwayland-satellite` through nix...
+          # niri # built manually; installing through nix doesn't work. 
           starship
           waybar
-          # xwayland-satellite
+          # xwayland-satellite # built manuall; installing through nix doesn't work.
         ];
         # Mac floating packages are managed through the Brewfile
       in
